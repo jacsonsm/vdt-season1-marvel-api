@@ -1,0 +1,27 @@
+{
+  "name": "vdt-season1-marvel-api",
+  "version": "1.0.0",
+  "description": "Projeto de automaçao API da Marvel QA Academy",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacsonsm/vdt-season1-marvel-api.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "cypress"
+  ],
+  "author": "jacsonsm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jacsonsm/vdt-season1-marvel-api/issues"
+  },
+  "homepage": "https://github.com/jacsonsm/vdt-season1-marvel-api#readme",
+  "devDependencies": {
+    "cypress": "^9.7.0"
+  }
+}
