@@ -3,7 +3,7 @@
 # QACademy 1.ª Temporada
 
 <h1 align="left">
-    <img src=".github/logo-stiker.svg](https://www.cypress.io/static/33498b5f95008093f5f94467c61d20ab/59c46/cypress-logo.webp)" width="250px">
+    <img src="https://www.cypress.io/static/33498b5f95008093f5f94467c61d20ab/59c46/cypress-logo.webp" width="250px">
 </h1>
 
 
