@@ -1,6 +1,6 @@
 
 
-# Viver de Teste 1.ª Temporada
+# QACademy 1.ª Temporada
 
 <h1 align="left">
     <img src=".github/logo-stiker.svg" width="250px">
