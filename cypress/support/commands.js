@@ -23,3 +23,28 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('setToken', function () {
+    cy.request({
+        method: 'POST',
+        url: '/sessions',
+        body: {
+            email: 'jacsonmedeiros@gmail.com',
+            password: 'qa-cademy'
+        }
+    }).then(function (response) {
+        expect(response.status).to.eql(200);
+        cy.log(response.body.token);
+        Cypress.env('token', response.body.token);
+
+    })
+})
+
+Cypress.Commands.add('back2ThePast', function () {
+    cy.request({
+        method: 'DELETE',
+        url: '/back2thepast/629813936791aa00161c9b5c'
+    }).then(function (response) {
+        expect(response.status).to.eql(200);
+        cy.log(response.body.message)
+    })
+})
