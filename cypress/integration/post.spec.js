@@ -16,7 +16,7 @@ describe('POST /characters', function () {
       active: true
     }
 
-    cy.request({
+    cy.api({
       method: 'POST',
       url: '/characters',
       body: character,
@@ -25,6 +25,7 @@ describe('POST /characters', function () {
       }
     }).then(function (response) {
       expect(response.status).to.eql(201)
+      //cy.log(response.body)
     })
   })
 })
