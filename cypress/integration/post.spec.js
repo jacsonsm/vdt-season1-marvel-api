@@ -25,7 +25,8 @@ describe('POST /characters', function () {
       }
     }).then(function (response) {
       expect(response.status).to.eql(201)
-      //cy.log(response.body)
+      cy.log(response.body.character_id)
+      expect(response.body.character_id.length).to.eql(24)
     })
   })
 })
