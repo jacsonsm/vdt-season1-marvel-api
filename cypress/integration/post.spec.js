@@ -57,20 +57,78 @@ describe('POST /characters', function () {
 
     context('Validação campos obrigatórios', function () {
 
-      it('Validar campo nome', function () {
+      it('Campo name é obrigatório', function () {
         const character = {
-          alias: 'Wolverine',
-          team: ['x-men'],
-          active: true,
+
+          //name: 'Charles Francis Xavier',
+          alias: 'Professor Xavier',
+          team: ['x-men', 'Iluminates'],
+          active: true
+
         };
 
         cy.postCharacter(character)
-          .then((response) => {
+          .then(function (response) {
             expect(response.status).to.eql(400);
-            expect(response.body.validation.body.message).to.eql('\"name\" is required');
+            expect(response.body.error).to.eql('Bad Request')
+            expect(response.body.validation.body.message).to.eql('"name" is required');
           })
       })
+
+      it('Campo alias é obrigatório', function () {
+        const character = {
+
+          name: 'Charles Francis Xavier',
+          //alias: 'Professor Xavier',
+          team: ['x-men', 'Iluminates'],
+          active: true
+        };
+
+        cy.postCharacter(character)
+          .then(function (response) {
+            expect(response.status).to.eql(400);
+            expect(response.body.error).to.eql('Bad Request')
+            expect(response.body.validation.body.message).to.eql('"alias" is required');
+          })
+      })
+
+      it('Campo team é obrigatório', function () {
+        const character = {
+          name: 'Charles Francis Xavier',
+          alias: 'Professor Xavier',
+          //team: ['x-men', 'Iluminates'],
+          active: true
+        };
+
+        cy.postCharacter(character)
+          .then(function (response) {
+            expect(response.status).to.eql(400);
+            expect(response.body.error).to.eql('Bad Request')
+            expect(response.body.validation.body.message).to.eql('"team" is required');
+          })
+      })
+
+      it('Campo active é obrigatório', function () {
+        const character = {
+          name: 'Charles Francis Xavier',
+          alias: 'Professor Xavier',
+          team: ['x-men', 'Iluminates'],
+          //active: true  
+        };
+
+        cy.postCharacter(character)
+          .then(function (response) {
+            expect(response.status).to.eql(400);
+            expect(response.body.error).to.eql('Bad Request')
+            expect(response.body.validation.body.message).to.eql('"active" is required');
+          })
+      })
+
     })
+
+
+
+
 
   })
 
