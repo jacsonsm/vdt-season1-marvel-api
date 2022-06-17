@@ -54,3 +54,20 @@ Cypress.Commands.add('back2ThePast', function () {
         //cy.log(response.body.message)
     })
 })
+
+//POST / requisiçao que realiza o teste no cadastro de personagens
+Cypress.Commands.add('postCharacter', function (payLoad) {
+    cy.api({
+        method: 'POST',
+        url: '/characters',
+        body: payLoad,
+        headers: {
+            Authorization: Cypress.env('token')
+        },
+
+        failOnStatusCode: false
+
+    }).then(function (response) {
+        return response
+    })
+})
