@@ -30,7 +30,10 @@ Cypress.Commands.add('setToken', function () {
         body: {
             email: 'jacsonmedeiros@gmail.com',
             password: 'qa-cademy'
-        }
+        },
+
+        failOnStatusCode: false
+
     }).then(function (response) {
         expect(response.status).to.eql(200);
         //cy.log(response.body.token);
@@ -42,7 +45,10 @@ Cypress.Commands.add('setToken', function () {
 Cypress.Commands.add('back2ThePast', function () {
     cy.api({
         method: 'DELETE',
-        url: '/back2thepast/629813936791aa00161c9b5c'
+        url: '/back2thepast/629813936791aa00161c9b5c',
+
+        failOnStatusCode: false
+
     }).then(function (response) {
         expect(response.status).to.eql(200);
         //cy.log(response.body.message)
