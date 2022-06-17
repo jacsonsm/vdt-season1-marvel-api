@@ -126,10 +126,6 @@ describe('POST /characters', function () {
 
     })
 
-
-
-
-
   })
 
 })
