@@ -4,6 +4,7 @@ describe('POST /characters', function () {
 
     cy.back2ThePast();
     cy.setToken();
+    cy.postCharacter();
 
   })
 
@@ -21,22 +22,7 @@ describe('POST /characters', function () {
       cy.log(response.body.character_id)
       expect(response.body.character_id.length).to.eql(24)
     })
-    //Substituido pelo codigo acima cy.postCharacter//
-    // cy.api({
-    //   method: 'POST',
-    //   url: '/characters',
-    //   body: character,
-    //   headers: {
-    //     Authorization: Cypress.env('token')
-    //   },
 
-    //   failOnStatusCode: false
-
-    // }).then(function (response) {
-    //   expect(response.status).to.eql(201)
-    //   cy.log(response.body.character_id)
-    //   expect(response.body.character_id.length).to.eql(24)
-    // })
   })
 
   context('Quando o personagem já estiver cadastrado', function () {
@@ -57,48 +43,33 @@ describe('POST /characters', function () {
 
       })
 
-      //Codigo abaixo substituido pelo codigo acima
-      // cy.api({
-      //   method: 'POST',
-      //   url: '/characters',
-      //   body: character,
-      //   headers: {
-      //     Authorization: Cypress.env('token')
-      //   },
-
-      //   failOnStatusCode: false
-
-      // }).then(function (response) {
-      //   expect(response.status).to.eql(201)
-
-      // })
     })
 
     it('Não deve cadastrar duplicado', function () {
-      //inicio
+
       cy.postCharacter(character).then(function (response) {
         expect(response.status).to.eql(400)
         expect(response.body.error).to.eql('Duplicate character')
 
       })
-      //fim
 
-      //Codigo abaixo substituido pelo codigo acima
-      // cy.api({
-      //   method: 'POST',
-      //   url: '/characters',
-      //   body: character,
-      //   headers: {
-      //     Authorization: Cypress.env('token')
-      //   },
+    })
 
-      //   failOnStatusCode: false
+    context('Validação campos obrigatórios', function () {
 
-      // }).then(function (response) {
-      //   expect(response.status).to.eql(400)
-      //   expect(response.body.error).to.eql('Duplicate character')
+      it('Validar campo nome', function () {
+        const character = {
+          alias: 'Wolverine',
+          team: ['x-men'],
+          active: true,
+        };
 
-      // })
+        cy.postCharacter(character)
+          .then((response) => {
+            expect(response.status).to.eql(400);
+            expect(response.body.validation.body.message).to.eql('\"name\" is required');
+          })
+      })
     })
 
   })
