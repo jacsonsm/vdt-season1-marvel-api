@@ -46,6 +46,33 @@ Cypress.Commands.add('postCharacter', function (payLoad) {
         return response
     })
 })
+//GET / requisiçao que testa a obtenção de personagens
+Cypress.Commands.add('getCharacters', function () {
+    cy.api({
+        method: 'GET',
+        url: '/characters',
+        //body: payLoad,
+        headers: {
+            Authorization: Cypress.env('token')
+        },
+
+        failOnStatusCode: false
+
+    }).then(function (response) {
+        return response
+    })
+})
+
+Cypress.Commands.add('populateCharacters', function (characters) {
+    // cy.postCharacter(characters[0])
+    // cy.postCharacter(characters[1])
+    // cy.postCharacter(characters[2])
+    //Substituido o codigo abairo por outra funçao que armazena a variavel
+    //c que é a unidade de um item da massa
+    characters.forEach(function (c) {
+        cy.postCharacter(c)
+    })
+})
 
 
 // ***********************************************
