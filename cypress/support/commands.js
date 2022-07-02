@@ -63,7 +63,7 @@ Cypress.Commands.add('getCharacters', function () {
     })
 })
 
-//GET / requisiçao que realiza a busca de personagens 
+//GET / requisiçao que realiza a busca de personagens por nome
 Cypress.Commands.add('searchCharacters', function (characterName) {
     cy.api({
         method: 'GET',
