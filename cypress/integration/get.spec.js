@@ -1,3 +1,4 @@
+
 describe('GET /characters', function () {
 
     const characters = [
@@ -26,7 +27,7 @@ describe('GET /characters', function () {
         cy.back2ThePast();
         cy.setToken();
         //cy.postCharacter();
-        cy.populateCharacters(characters)
+        //cy.populateCharacters(characters)
 
     })
 
@@ -39,7 +40,7 @@ describe('GET /characters', function () {
         });
     })
 
-    it.only('Deve buscar personagem por nome', function () {
+    it('Deve buscar personagem por nome', function () {
         cy.searchCharacters('Logan').then(function (response) {
             expect(response.status).to.eql(200)
             expect(response.body.length).to.eql(1)
@@ -47,5 +48,48 @@ describe('GET /characters', function () {
             expect(response.body[0].team).to.eql(['X-Men'])
             expect(response.body[0].active).to.eql(true)
         });
+    })
+})
+
+describe('GET /characters/id', function () {
+
+    before(function () {
+
+        cy.back2ThePast();
+        cy.setToken();
+
+    })
+
+    const tonyStark = {
+        name: 'Tony Stark',
+        alias: 'Homem de Ferro',
+        team: [
+            'Vingadores'
+        ],
+        active: true
+    }
+
+    context.only('Quando tenho um personagem cadastrado', function () {
+
+        before(function () {
+
+            cy.postCharacter(tonyStark).then(function (response) {
+                Cypress.env('characterId', response.body.character_id)
+            })
+
+        })
+
+        it('Deve buscar o personagem pelo id', function () {
+
+            const id = Cypress.env('characterId')
+
+            cy.getCharacterById(id).then(function (response) {
+                expect(response.status).to.eql(200)
+                expect(response.body.alias).to.eql('Homem de Ferro')
+                expect(response.body.team).to.eql(['Vingadores'])
+                expect(response.body.active).to.eql(true)
+
+            })
+        })
     })
 })

@@ -63,6 +63,23 @@ Cypress.Commands.add('getCharacters', function () {
     })
 })
 
+//GET / Requisição que testa a obtenção de persogens especifico.
+Cypress.Commands.add('getCharacterById', function (characterId) {
+    cy.api({
+        method: 'GET',
+        url: '/characters/' + characterId,
+        //body: payLoad,
+        headers: {
+            Authorization: Cypress.env('token')
+        },
+
+        failOnStatusCode: false
+
+    }).then(function (response) {
+        return response
+    })
+})
+
 //GET / requisiçao que realiza a busca de personagens por nome
 Cypress.Commands.add('searchCharacters', function (characterName) {
     cy.api({
