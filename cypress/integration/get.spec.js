@@ -49,7 +49,7 @@ describe('GET /characters', function () {
     })
 })
 
-describe.only('GET /characters/id', function () {
+describe('GET /characters/id', function () {
 
     before(function () {
         cy.back2ThePast();

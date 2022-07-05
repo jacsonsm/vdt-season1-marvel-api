@@ -80,6 +80,23 @@ Cypress.Commands.add('getCharacterById', function (characterId) {
     })
 })
 
+//DELETE / Requisição que DELETA persogens por id.
+Cypress.Commands.add('deleteCharacterById', function (characterId) {
+    cy.api({
+        method: 'DELETE',
+        url: '/characters/' + characterId,
+        //body: payLoad,
+        headers: {
+            Authorization: Cypress.env('token')
+        },
+
+        failOnStatusCode: false
+
+    }).then(function (response) {
+        return response
+    })
+})
+
 //GET / requisiçao que realiza a busca de personagens por nome
 Cypress.Commands.add('searchCharacters', function (characterName) {
     cy.api({
