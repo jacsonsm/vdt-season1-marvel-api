@@ -4,7 +4,8 @@
   "description": "Projeto de automaçao API da Marvel QA Academy",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run"
+    "back2thepast": "sh ./back2thepast.sh",
+    "test": "npm run back2thepast && npx cypress run"
   },
   "repository": {
     "type": "git",

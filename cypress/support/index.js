@@ -20,3 +20,8 @@ import '@bahmutov/cy-api'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+before(function () {
+    //cy.back2ThePast();
+    cy.setToken();
+})

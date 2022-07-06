@@ -1,12 +1,12 @@
 describe('POST /characters', function () {
 
-  before(function () {
+  // before(function () {
 
-    cy.back2ThePast();
-    cy.setToken();
-    cy.postCharacter();
+  //   //cy.back2ThePast();
+  //   //cy.setToken();
+  //   cy.postCharacter();
 
-  })
+  // })
 
   it('Cadastrar um personagem', function () {
     const character = {

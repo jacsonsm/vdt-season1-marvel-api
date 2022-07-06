@@ -23,10 +23,10 @@ describe('GET /characters', function () {
     ]
 
     before(function () {
-        cy.back2ThePast();
-        cy.setToken();
-        //cy.postCharacter();
-        //cy.populateCharacters(characters)
+        //cy.back2ThePast();
+        //cy.setToken();
+        // cy.postCharacter();
+        cy.populateCharacters(characters)
     })
 
     it('Deve retornar uma lista de Personagens', function () {
@@ -51,10 +51,10 @@ describe('GET /characters', function () {
 
 describe('GET /characters/id', function () {
 
-    before(function () {
-        cy.back2ThePast();
-        cy.setToken();
-    })
+    // before(function () {
+    //     //cy.back2ThePast();
+    //     cy.setToken();
+    // })
 
     const tonyStark = {
         name: 'Tony Stark',

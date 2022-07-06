@@ -1,9 +1,9 @@
 describe('DELETE /characters/id', function () {
 
-    before(function () {
-        cy.back2ThePast();
-        cy.setToken();
-    })
+    // before(function () {
+    //     //cy.back2ThePast();
+    //     cy.setToken();
+    // })
 
     const tochaHumana = {
         name: 'Jhonny Storm',
